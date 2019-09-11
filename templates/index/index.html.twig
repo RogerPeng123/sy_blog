@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}Test Page!{% endblock %}
+{% block body %}
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            max-width: 800px;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Hello Rogers! </h1>
+
+        请输入你要转化的小写数字:
+        <ul>
+            <input type="text" id="lowercase">
+            <button id="btn-sub">转换</button>
+        </ul>
+
+        <ul>
+            <span id="before"></span>
+        </ul>
+    </div>
+
+    <script>
+        $(function () {
+            $('#btn-sub').on('click', function () {
+                let number = $('#lowercase').val();
+                let url = "{{ url('change')|escape('js') }}";
+
+                $.post(url, {n: number}, function (e) {
+
+                    console.log(e);
+                    // if (e.status === 200) {
+                    //     $('#before').html(e.data);
+                    // }
+                });
+            });
+        });
+    </script>
+{% endblock %}
+
+

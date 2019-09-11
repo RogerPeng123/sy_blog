@@ -25,3 +25,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # 小写数字转大写金额处理器
+    App\Handler\ChangeAmountMessengerHandler:
+        autoconfigure: false
+        class: App\Handler\ChangeAmountMessengerHandler
+        tags:
+            - {name: messenger.message_handler }
